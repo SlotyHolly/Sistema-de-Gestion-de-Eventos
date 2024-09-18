@@ -20,15 +20,15 @@ def relative_to_assets(path: str) -> Path:
 
 window = Tk()
 
-window.geometry("567x408")
+window.geometry("576x554")
 window.configure(bg = "#FFFFFF")
 
 
 canvas = Canvas(
     window,
     bg = "#FFFFFF",
-    height = 408,
-    width = 567,
+    height = 554,
+    width = 576,
     bd = 0,
     highlightthickness = 0,
     relief = "ridge"
@@ -45,8 +45,8 @@ button_1 = Button(
     relief="flat"
 )
 button_1.place(
-    x=181.99999999999994,
-    y=306.0,
+    x=190.0,
+    y=460.0,
     width=196.0,
     height=54.0
 )
@@ -54,8 +54,8 @@ button_1.place(
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
-    283.99999999999994,
-    236.5,
+    304.0,
+    293.5,
     image=entry_image_1
 )
 entry_1 = Entry(
@@ -65,17 +65,17 @@ entry_1 = Entry(
     highlightthickness=0
 )
 entry_1.place(
-    x=120.99999999999994,
-    y=202.0,
-    width=326.0,
-    height=67.0
+    x=112.0,
+    y=269.0,
+    width=384.0,
+    height=47.0
 )
 
 canvas.create_text(
-    131.99999999999994,
-    218.0,
+    70.0,
+    215.0,
     anchor="nw",
-    text="Nueva Contraseña",
+    text="Contraseña anterior:",
     fill="#000000",
     font=("AndadaPro Bold", 32 * -1)
 )
@@ -83,8 +83,8 @@ canvas.create_text(
 entry_image_2 = PhotoImage(
     file=relative_to_assets("entry_2.png"))
 entry_bg_2 = canvas.create_image(
-    283.99999999999994,
-    132.5,
+    304.0,
+    176.5,
     image=entry_image_2
 )
 entry_2 = Entry(
@@ -94,28 +94,57 @@ entry_2 = Entry(
     highlightthickness=0
 )
 entry_2.place(
-    x=120.99999999999994,
-    y=98.0,
-    width=326.0,
-    height=67.0
+    x=112.0,
+    y=152.0,
+    width=384.0,
+    height=47.0
 )
 
 canvas.create_text(
-    125.99999999999994,
-    114.0,
+    70.0,
+    98.0,
     anchor="nw",
-    text="Contraseña anterior\n",
+    text="Contraseña anterior:",
+    fill="#000000",
+    font=("AndadaPro Bold", 32 * -1)
+)
+
+entry_image_3 = PhotoImage(
+    file=relative_to_assets("entry_3.png"))
+entry_bg_3 = canvas.create_image(
+    304.0,
+    403.5,
+    image=entry_image_3
+)
+entry_3 = Entry(
+    bd=0,
+    bg="#D9D9D9",
+    fg="#000716",
+    highlightthickness=0
+)
+entry_3.place(
+    x=112.0,
+    y=379.0,
+    width=384.0,
+    height=47.0
+)
+
+canvas.create_text(
+    70.0,
+    325.0,
+    anchor="nw",
+    text="Nueva Contraseña:",
     fill="#000000",
     font=("AndadaPro Bold", 32 * -1)
 )
 
 canvas.create_text(
-    121.99999999999994,
-    35.0,
+    81.0,
+    21.0,
     anchor="nw",
     text="Cambiar Contraseña",
     fill="#000000",
-    font=("AndadaPro ExtraBold", 32 * -1)
+    font=("AndadaPro ExtraBold", 40 * -1)
 )
 window.resizable(False, False)
 window.mainloop()

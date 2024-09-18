@@ -20,15 +20,15 @@ def relative_to_assets(path: str) -> Path:
 
 window = Tk()
 
-window.geometry("567x450")
+window.geometry("470x506")
 window.configure(bg = "#FFFFFF")
 
 
 canvas = Canvas(
     window,
     bg = "#FFFFFF",
-    height = 450,
-    width = 567,
+    height = 506,
+    width = 470,
     bd = 0,
     highlightthickness = 0,
     relief = "ridge"
@@ -45,17 +45,35 @@ button_1 = Button(
     relief="flat"
 )
 button_1.place(
-    x=184.99999999999994,
-    y=381.0,
+    x=136.99999999999994,
+    y=420.0,
     width=196.0,
     height=54.0
+)
+
+canvas.create_text(
+    24.999999999999943,
+    290.0,
+    anchor="nw",
+    text="Nueva Contraseña",
+    fill="#000000",
+    font=("AndadaPro Bold", 32 * -1)
+)
+
+canvas.create_text(
+    24.999999999999943,
+    180.0,
+    anchor="nw",
+    text="Codigo",
+    fill="#000000",
+    font=("AndadaPro Bold", 32 * -1)
 )
 
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
-    282.99999999999994,
-    319.5,
+    221.99999999999994,
+    145.5,
     image=entry_image_1
 )
 entry_1 = Entry(
@@ -65,26 +83,17 @@ entry_1 = Entry(
     highlightthickness=0
 )
 entry_1.place(
-    x=134.99999999999994,
-    y=285.0,
-    width=296.0,
-    height=67.0
-)
-
-canvas.create_text(
-    134.99999999999994,
-    301.0,
-    anchor="nw",
-    text="Nueva Contraseña",
-    fill="#000000",
-    font=("AndadaPro Bold", 32 * -1)
+    x=78.99999999999994,
+    y=121.0,
+    width=286.0,
+    height=47.0
 )
 
 entry_image_2 = PhotoImage(
     file=relative_to_assets("entry_2.png"))
 entry_bg_2 = canvas.create_image(
-    282.99999999999994,
-    224.5,
+    221.99999999999994,
+    262.5,
     image=entry_image_2
 )
 entry_2 = Entry(
@@ -94,26 +103,17 @@ entry_2 = Entry(
     highlightthickness=0
 )
 entry_2.place(
-    x=134.99999999999994,
-    y=190.0,
-    width=296.0,
-    height=67.0
-)
-
-canvas.create_text(
-    136.99999999999994,
-    207.0,
-    anchor="nw",
-    text="Codigo",
-    fill="#000000",
-    font=("AndadaPro Bold", 32 * -1)
+    x=78.99999999999994,
+    y=238.0,
+    width=286.0,
+    height=47.0
 )
 
 entry_image_3 = PhotoImage(
     file=relative_to_assets("entry_3.png"))
 entry_bg_3 = canvas.create_image(
-    283.99999999999994,
-    132.5,
+    221.99999999999994,
+    373.5,
     image=entry_image_3
 )
 entry_3 = Entry(
@@ -123,15 +123,15 @@ entry_3 = Entry(
     highlightthickness=0
 )
 entry_3.place(
-    x=135.99999999999994,
-    y=98.0,
-    width=296.0,
-    height=67.0
+    x=78.99999999999994,
+    y=349.0,
+    width=286.0,
+    height=47.0
 )
 
 canvas.create_text(
-    136.99999999999994,
-    114.0,
+    24.999999999999943,
+    68.0,
     anchor="nw",
     text="Usuario\n",
     fill="#000000",
@@ -139,8 +139,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    108.99999999999994,
-    23.0,
+    59.99999999999994,
+    15.0,
     anchor="nw",
     text="Recuperar Contraseña",
     fill="#000000",

@@ -45,8 +45,8 @@ button_1 = Button(
     relief="flat"
 )
 button_1.place(
-    x=133.0,
-    y=280.0,
+    x=126.0,
+    y=300.0,
     width=196.0,
     height=54.0
 )
@@ -61,8 +61,8 @@ button_2 = Button(
     relief="flat"
 )
 button_2.place(
-    x=133.0,
-    y=354.0,
+    x=127.0,
+    y=374.0,
     width=196.0,
     height=54.0
 )
@@ -86,8 +86,8 @@ button_3.place(
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
-    232.0,
-    126.5,
+    215.5,
+    151.0,
     image=entry_image_1
 )
 entry_1 = Entry(
@@ -97,17 +97,17 @@ entry_1 = Entry(
     highlightthickness=0
 )
 entry_1.place(
-    x=84.0,
-    y=92.0,
-    width=296.0,
-    height=67.0
+    x=35.0,
+    y=129.0,
+    width=361.0,
+    height=42.0
 )
 
 entry_image_2 = PhotoImage(
     file=relative_to_assets("entry_2.png"))
 entry_bg_2 = canvas.create_image(
-    231.0,
-    225.5,
+    215.5,
+    257.0,
     image=entry_image_2
 )
 entry_2 = Entry(
@@ -117,15 +117,15 @@ entry_2 = Entry(
     highlightthickness=0
 )
 entry_2.place(
-    x=83.0,
-    y=191.0,
-    width=296.0,
-    height=67.0
+    x=35.0,
+    y=234.0,
+    width=361.0,
+    height=44.0
 )
 
 canvas.create_text(
-    85.0,
-    208.0,
+    25.0,
+    186.0,
     anchor="nw",
     text="Contraseña\n",
     fill="#000000",
@@ -133,10 +133,10 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    85.0,
-    108.0,
+    25.0,
+    79.0,
     anchor="nw",
-    text="Usuario\n",
+    text="Usuario:",
     fill="#000000",
     font=("AndadaPro Bold", 32 * -1)
 )
