@@ -1,6 +1,8 @@
 from ui.login import init_login  # Importa la función para iniciar la ventana de login
 from ui.user_dashboard import init_user_dashboard
 from ui.admin_console import init_admin_console
+from ui.register import init_register_user
+from functions.registro import register_user
 from functions.login import validate_credentials
 
 class Aplicacion:
@@ -33,19 +35,29 @@ class Aplicacion:
         if resultado['success']:
             print(f"Usuario {username} ha iniciado sesión.")
             self.rol_actual = resultado['role']
-            self.mostrar_dashboard()
+            self.show_dashboard()
         else:
             print("Credenciales inválidas. Inténtalo de nuevo.")
 
     def register_user(self):
-        """Muestra la ventana de registro y maneja la lógica de registro."""
-        print("Mostrar ventana de registro...")  # Llamada a la función de registro de usuario (a implementar)
+        """Muestra la ventana de registro de usuario."""
+        username, password = init_register_user()
+        if username and password:
+            # Llamar a la función de registro
+            resultado = register_user(username, password)
+            if resultado['success']:
+                # Llamar nuevamente a la ventana de login
+                accion, username, password = init_login()
+            else:
+                print(f"Error al registrar: {resultado['message']}")
+        else:
+            print("Registro cancelado.")
 
     def change_password(self):
         """Muestra la ventana para cambiar la contraseña."""
         print("Mostrar ventana de cambio de contraseña...")  # Llamada a la función de cambio de contraseña (a implementar)
 
-    def mostrar_dashboard(self):
+    def show_dashboard(self):
         """Muestra el dashboard según el rol del usuario."""
         if self.rol_actual == "usuario":
             init_user_dashboard()  # Abre el dashboard de usuario (a implementar)
