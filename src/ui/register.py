@@ -11,7 +11,7 @@ from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"..\assets\login")
+ASSETS_PATH = OUTPUT_PATH / Path(r"..\assets\register")
 
 
 def relative_to_assets(path: str) -> Path:
@@ -20,14 +20,14 @@ def relative_to_assets(path: str) -> Path:
 
 window = Tk()
 
-window.geometry("463x499")
+window.geometry("463x370")
 window.configure(bg = "#FFFFFF")
 
 
 canvas = Canvas(
     window,
     bg = "#FFFFFF",
-    height = 499,
+    height = 370,
     width = 463,
     bd = 0,
     highlightthickness = 0,
@@ -46,41 +46,9 @@ button_1 = Button(
 )
 button_1.place(
     x=133.0,
-    y=280.0,
+    y=290.0,
     width=196.0,
     height=54.0
-)
-
-button_image_2 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
-button_2 = Button(
-    image=button_image_2,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
-    relief="flat"
-)
-button_2.place(
-    x=133.0,
-    y=354.0,
-    width=196.0,
-    height=54.0
-)
-
-button_image_3 = PhotoImage(
-    file=relative_to_assets("button_3.png"))
-button_3 = Button(
-    image=button_image_3,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_3 clicked"),
-    relief="flat"
-)
-button_3.place(
-    x=25.0,
-    y=448.0,
-    width=181.0,
-    height=37.0
 )
 
 entry_image_1 = PhotoImage(
@@ -142,10 +110,10 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    105.0,
-    21.0,
+    166.0,
+    24.0,
     anchor="nw",
-    text="Inicio de Sesion\n",
+    text="Registro",
     fill="#000000",
     font=("AndadaPro ExtraBold", 32 * -1)
 )
