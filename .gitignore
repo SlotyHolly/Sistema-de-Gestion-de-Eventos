@@ -4,3 +4,4 @@ __pycache__/
 env/*
 .json
 *.json
+src/data/users.json

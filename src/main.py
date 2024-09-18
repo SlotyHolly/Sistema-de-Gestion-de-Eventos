@@ -1,15 +1,15 @@
 from ui.login import init_login  # Importa la función para iniciar la ventana de login
 from ui.user_dashboard import init_user_dashboard
-from ui.admin_dashboard import init_admin_dashboard
+from ui.admin_dashboard import init_admin_dashboard  # Cambié el nombre para reflejar la función actual
 from ui.register import init_register_user
 from functions.registro import register_user
 from functions.login import validate_credentials
 
 class Aplicacion:
     def __init__(self):
-        # Aquí podrías inicializar variables de estado, como el usuario actual
-        self.usuario_actual = None
-        self.rol_actual = None
+        # Inicializa variables de estado, como el usuario actual
+        self.username = None
+        self.rol = None
 
     def iniciar_aplicacion(self):
         """Inicia la aplicación con la ventana de login y controla el flujo."""
@@ -34,8 +34,9 @@ class Aplicacion:
         
         if resultado['success']:
             print(f"Usuario {username} ha iniciado sesión.")
-            self.rol_actual = resultado['role']
-            self.show_dashboard()
+            self.username = username  # Asigna el nombre de usuario al atributo de la clase
+            self.rol = resultado['role']
+            self.show_dashboard()  # Llama a show_dashboard sin pasar argumentos
         else:
             print("Credenciales inválidas. Inténtalo de nuevo.")
 
@@ -59,10 +60,10 @@ class Aplicacion:
 
     def show_dashboard(self):
         """Muestra el dashboard según el rol del usuario."""
-        if self.rol_actual == "usuario":
-            init_user_dashboard()  # Abre el dashboard de usuario (a implementar)
-        elif self.rol_actual == "admin":
-            init_admin_console()  # Abre la consola de administrador (a implementar)
+        if self.rol == "usuario":
+            init_user_dashboard(self.username)  # Abre el dashboard de usuario
+        elif self.rol == "admin":
+            init_admin_dashboard(self.username)  # Abre la consola de administrador
 
 if __name__ == "__main__":
     app = Aplicacion()
