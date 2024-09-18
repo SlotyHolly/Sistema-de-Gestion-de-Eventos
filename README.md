@@ -1,2 +1,5 @@
-# Sistema de Gestion de Eventos
- Projecto Programacion 1
+# Gestor de Eventos
+
+Este es un proyecto de un gestor de eventos desarrollado en Python.
+## Instrucciones
+- Por completar...
