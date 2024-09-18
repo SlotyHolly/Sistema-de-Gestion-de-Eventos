@@ -1,6 +1,6 @@
 from ui.login import init_login  # Importa la función para iniciar la ventana de login
 from ui.user_dashboard import init_user_dashboard
-from ui.admin_console import init_admin_console
+from ui.admin_dashboard import init_admin_dashboard
 from ui.register import init_register_user
 from functions.registro import register_user
 from functions.login import validate_credentials
