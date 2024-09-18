@@ -30,7 +30,7 @@ def init_login():
 
     def on_password_change():
         global action
-        action = 'change_password'
+        action = 'recovery_password'
         window.destroy()
 
     # Configuración de la ventana principal

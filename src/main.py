@@ -1,6 +1,7 @@
-from ui.login import init_login  # Importa la función para iniciar la ventana de login
+from ui.login import init_login
 from ui.user_dashboard import init_user_dashboard
-from ui.admin_dashboard import init_admin_dashboard  # Cambié el nombre para reflejar la función actual
+from ui.admin_dashboard import init_admin_dashboard
+from ui.recovery_password import init_recovery_password
 from ui.register import init_register_user
 from functions.registro import register_user
 from functions.login import validate_credentials
@@ -22,8 +23,8 @@ class Aplicacion:
                 self.login(username, password)
             elif accion == 'register':
                 self.register_user()
-            elif accion == 'change_password':
-                self.change_password()
+            elif accion == 'recovery_password':
+                self.init_recovery_password()
             elif accion is None:
                 print("Cerrando la aplicación...")
                 break  # Sale del bucle y cierra la aplicación
@@ -54,9 +55,9 @@ class Aplicacion:
         else:
             print("Registro cancelado.")
 
-    def change_password(self):
-        """Muestra la ventana para cambiar la contraseña."""
-        print("Mostrar ventana de cambio de contraseña...")  # Llamada a la función de cambio de contraseña (a implementar)
+    def init_recovery_password(self):
+        """Muestra la ventana de recuperación de contraseña."""
+        init_recovery_password()
 
     def show_dashboard(self):
         """Muestra el dashboard según el rol del usuario."""
