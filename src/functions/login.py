@@ -20,8 +20,12 @@ def validate_credentials(username, password):
         return {'success': False, 'role': None}
 
     except FileNotFoundError:
-        print(f"Error: No se encontró el archivo {USUARIOS_PATH}.")
+        print(f"El archivo {USUARIOS_PATH} no existe. Creando un archivo vacío...")
+        # Crear un archivo vacío con una lista vacía de usuarios
+        with open(USUARIOS_PATH, 'w') as file:
+            json.dump([], file)
         return {'success': False, 'role': None}
+    
     except json.JSONDecodeError:
         print(f"Error: El archivo {USUARIOS_PATH} no contiene un JSON válido.")
         return {'success': False, 'role': None}
