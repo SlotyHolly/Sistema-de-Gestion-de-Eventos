@@ -9,11 +9,32 @@ def hash_password(password):
     """Devuelve el hash SHA-256 de la contraseña proporcionada."""
     return hashlib.sha256(password.encode()).hexdigest()
 
-def validate_credentials(username, password):
+def load_users():
+    """Carga los usuarios desde el archivo JSON, o devuelve una lista vacía si el archivo no existe o está corrupto."""
     try:
-        # Leer el archivo JSON
         with open(USUARIOS_PATH, 'r') as file:
-            usuarios = json.load(file)
+            return json.load(file)
+    except FileNotFoundError:
+        print(f"El archivo {USUARIOS_PATH} no existe. Creando un archivo nuevo...")
+        return []
+    except json.JSONDecodeError:
+        print(f"Error: El archivo {USUARIOS_PATH} no contiene un JSON válido. Se reiniciará el archivo.")
+        return []
+
+def save_users(usuarios):
+    """Guarda la lista de usuarios en el archivo JSON."""
+    try:
+        with open(USUARIOS_PATH, 'w') as file:
+            json.dump(usuarios, file, indent=4)
+        return True
+    except IOError:
+        print("Error al guardar los cambios en el archivo.")
+        return False
+
+def validate_credentials(username, password):
+    """Valida las credenciales del usuario y devuelve su rol si son correctas."""
+    try:
+        usuarios = load_users()
 
         # Buscar el usuario en la lista de usuarios
         for usuario in usuarios:
@@ -28,8 +49,7 @@ def validate_credentials(username, password):
     except FileNotFoundError:
         print(f"El archivo {USUARIOS_PATH} no existe. Creando un archivo vacío...")
         # Crear un archivo vacío con una lista vacía de usuarios
-        with open(USUARIOS_PATH, 'w') as file:
-            json.dump([], file)
+        save_users([])
         return {'success': False, 'role': None}
     
     except json.JSONDecodeError:

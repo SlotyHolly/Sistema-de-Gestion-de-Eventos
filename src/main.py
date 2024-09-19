@@ -6,19 +6,14 @@ from ui.register import init_register_user
 from functions.registro import register_user
 from functions.login import validate_credentials
 
-class Aplicacion:
+class App:
     def __init__(self):
-        # Inicializa variables de estado, como el usuario actual
         self.username = None
         self.rol = None
 
-    def iniciar_aplicacion(self):
-        """Inicia la aplicación con la ventana de login y controla el flujo."""
+    def run(self):
         while True:
-            # Muestra la ventana de login y obtiene la acción seleccionada
             accion, username, password = init_login()
-
-            # Controla el flujo basado en la acción devuelta
             if accion == 'login':
                 self.login(username, password)
             elif accion == 'register':
@@ -31,12 +26,12 @@ class Aplicacion:
 
     def login(self, username, password):
         """Maneja el proceso de inicio de sesión."""
-        resultado = validate_credentials(username, password)
+        result = validate_credentials(username, password)
         
-        if resultado['success']:
+        if result['success']:
             print(f"Usuario {username} ha iniciado sesión.")
             self.username = username  # Asigna el nombre de usuario al atributo de la clase
-            self.rol = resultado['role']
+            self.rol = result['role']
             self.show_dashboard()  # Llama a show_dashboard sin pasar argumentos
         else:
             print("Credenciales inválidas. Inténtalo de nuevo.")
@@ -46,14 +41,14 @@ class Aplicacion:
         username, password = init_register_user()
         if username and password:
             # Llamar a la función de registro
-            resultado = register_user(username, password)
-            if resultado['success']:
+            result = register_user(username, password)
+            if result['success']:
                 # Llamar nuevamente a la ventana de login
                 accion, username, password = init_login()
             else:
-                print(f"Error al registrar: {resultado['message']}")
+                print(f"Error al registrar: {result['message']}")
         else:
-            print("Registro cancelado.")
+            print("El nombre de usuario y la contraseña no pueden estar vacíos.")
 
     def init_recovery_password(self):
         """Muestra la ventana de recuperación de contraseña."""
@@ -67,5 +62,5 @@ class Aplicacion:
             init_admin_dashboard(self.username)  # Abre la consola de administrador
 
 if __name__ == "__main__":
-    app = Aplicacion()
-    app.iniciar_aplicacion()
+    app = App()
+    app.run()
