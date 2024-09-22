@@ -3,7 +3,7 @@ from tkinter import Tk, Canvas, Entry, Button, PhotoImage, messagebox
 from functions.password import recovery_password  # Importamos la función para la recuperación de contraseña
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r".\assets\recovery_password")
+ASSETS_PATH = OUTPUT_PATH / Path(r"./assets/recovery_password")
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)

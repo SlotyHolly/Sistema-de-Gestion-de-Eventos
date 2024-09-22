@@ -8,7 +8,7 @@ EVENTS_PATH = Path(__file__).parent.parent / "data/events.json"
 FLYERS_PATH = Path(__file__).parent.parent / "data/events_data"
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r".\assets\dashboard_admin")
+ASSETS_PATH = OUTPUT_PATH / Path(r"./assets/dashboard_admin")
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
