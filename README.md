@@ -79,13 +79,13 @@ Sistema-de-Gestion-de-Eventos/
 │   ├── functions/                 # Funciones principales para manejar la lógica del sistema
 │   │   ├── login.py               # Función para validar credenciales de usuario
 │   │   ├── registro.py            # Función para registrar nuevos usuarios
-|   |   ├── events.py              # Función para el manejo de los eventos
+│   │   ├── events.py              # Función para el manejo de los eventos
 │   │   └── password.py            # Función para la recuperación de contraseñas
 │   │
 │   └── data/                      # Carpeta que contiene la base de datos en formato JSON
 │       ├── events_data/           # Carpeta que contiene los Flyers de los eventos
-|       |   └── default_flyer.png  # Flyer Base
-|       ├── users.json             # Archivo JSON que almacena la información de usuarios
+│       │   └── default_flyer.png  # Flyer Base
+│       ├── users.json             # Archivo JSON que almacena la información de usuarios
 │       └── events.json            # Archivo JSON que almacena la información de eventos
 │
 ├── install.py                     # Script de instalación para verificar Python, crear entorno virtual e instalar dependencias
