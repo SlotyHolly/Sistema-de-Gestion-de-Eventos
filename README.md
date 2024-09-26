@@ -26,6 +26,15 @@ Este proyecto es un **Sistema de Gestión de Eventos** desarrollado en **Python 
 - **Tkinter**: Biblioteca utilizada para la creación de la interfaz gráfica.
 - **JSON**: Se usa para almacenar la información de usuarios y eventos.
 - **Pillow (PIL)**: Para el manejo y redimensionado de imágenes en el dashboard de administrador.
+- **Figma**: Para la creacion de la UI
+
+## Diseño de la Interfaz Gráfica (UI)
+
+Para la creación de la interfaz gráfica se utilizó el proyecto **Tkinter Designer** que permite convertir diseños de **Figma** directamente a código Tkinter. Esto aceleró el proceso de desarrollo de la UI.
+
+Si estás interesado en utilizar esta herramienta, puedes obtener más información en el repositorio de GitHub:
+
+- Proyecto utilizado: [Tkinter Designer](https://github.com/ParthJadhav/Tkinter-Designer)
 
 ## Requisitos previos
 - **Python 3.11** o superior instalado en tu sistema (el script `install.py` verifica e instala Python 3.11 si es necesario).
