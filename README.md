@@ -54,6 +54,14 @@ Este proyecto es un **Sistema de Gestión de Eventos** desarrollado en **Python 
     - Crear un entorno virtual llamado `env`.
     - Instalar las dependencias desde el archivo `requirements.txt`.
 
+    **Compatibilidad del Script**
+    
+    Este script debería funcionar en:
+
+    - Windows: Abre la URL de descarga de Python en el navegador.
+    - MacOS: Abre la URL de descarga de Python utilizando `open`.
+    - Linux: Recomienda el uso del gestor de paquetes o abre la página de descargas de Python utilizando `xdg-open`.
+
 3. **Ejecuta el proyecto: Después de instalar las dependencias, puedes ejecutar la aplicación con:**
 
     ```bash
