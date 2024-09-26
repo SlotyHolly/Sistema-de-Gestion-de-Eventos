@@ -83,21 +83,31 @@ def init_admin_dashboard(username):
     scroll_canvas.create_window((0, 0), window=event_frame, anchor='nw')
 
     # Cargar y mostrar eventos
-    eventos = [{"nombre": "Este es un evento de prueba con una descripción larga", "flyer": "default_flyer.png"}] * 10
+    eventos = cargar_eventos()  # Cargar los eventos reales desde el JSON
+    if not eventos:
+        eventos = [{"nombre": "Este es un evento de prueba con una descripción larga", "flyer": "default_flyer.png"}] * 10  # Eventos de prueba
 
-    for idx, evento in enumerate(eventos):
-        try:
-            flyer_path = relative_to_flyers(evento.get('flyer', 'default_flyer.png'))
-            flyer_image = cargar_imagen_redimensionada(flyer_path, size=(100, 100))
-            if flyer_image:
-                flyer_label = Label(event_frame, image=flyer_image, bg="#FFFFFF")
-                flyer_label.image = flyer_image
-                flyer_label.grid(row=idx // 2, column=(idx % 2) * 2, padx=(10, 25), pady=10)
+    # Definir el tamaño de la cuadrícula
+    filas, columnas = 3, 2  # 3 filas, 2 columnas por pantalla (6 eventos por pantalla)
+    matriz_eventos = [eventos[i:i+columnas] for i in range(0, len(eventos), columnas)]
 
-                info_label = Label(event_frame, text=evento['nombre'], bg="#FFFFFF", font=("Inter", 10), wraplength=200, justify="left")
-                info_label.grid(row=idx // 2, column=(idx % 2) * 2 + 1, padx=10, pady=10)
-        except Exception as e:
-            print(f"Error al cargar el evento: {e}")
+    # Mostrar los eventos en la cuadrícula
+    for i, fila_eventos in enumerate(matriz_eventos):
+        for j, evento in enumerate(fila_eventos):
+            try:
+                flyer_path = relative_to_flyers(evento.get('flyer', 'default_flyer.png'))
+                flyer_image = cargar_imagen_redimensionada(flyer_path, size=(100, 100))
+                if flyer_image:
+                    # Mostrar el flyer
+                    flyer_label = Label(event_frame, image=flyer_image, bg="#FFFFFF")
+                    flyer_label.image = flyer_image
+                    flyer_label.grid(row=i, column=j*2, padx=(10, 25), pady=10)
+
+                    # Mostrar la información del evento
+                    info_label = Label(event_frame, text=evento['nombre'], bg="#FFFFFF", font=("Inter", 10), wraplength=200, justify="left")
+                    info_label.grid(row=i, column=j*2+1, padx=10, pady=10)
+            except Exception as e:
+                print(f"Error al cargar el evento: {e}")
 
     # Configurar el área desplazable
     event_frame.update_idletasks()
