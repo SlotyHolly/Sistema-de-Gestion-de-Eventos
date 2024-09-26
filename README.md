@@ -71,10 +71,10 @@ Sistema-de-Gestion-de-Eventos/
 │   ├── ui/                        # Carpeta que contiene las interfaces gráficas
 │   │   ├── login.py               # Interfaz gráfica para el inicio de sesión
 │   │   ├── register.py            # Interfaz gráfica para el registro de usuarios
-│   │   ├── admin_dashboard.py      # Dashboard para los administradores
-│   │   ├── user_dashboard.py       # Dashboard para los usuarios
-│   │   ├── change_password.py       # Dashboard para gestionar el cambio de contrasena
-│   │   └── recovery_password.py    # Interfaz gráfica para recuperar contraseñas
+│   │   ├── admin_dashboard.py     # Dashboard para los administradores
+│   │   ├── user_dashboard.py      # Dashboard para los usuarios
+│   │   ├── change_password.py     # Dashboard para gestionar el cambio de contrasena
+│   │   └── recovery_password.py   # Interfaz gráfica para recuperar contraseñas
 │   │
 │   ├── functions/                 # Funciones principales para manejar la lógica del sistema
 │   │   ├── login.py               # Función para validar credenciales de usuario
