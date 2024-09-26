@@ -80,34 +80,42 @@ Si estás interesado en utilizar esta herramienta, puedes obtener más informaci
 
 El proyecto sigue la siguiente estructura de carpetas:
 
-```bash
+```
 Sistema-de-Gestion-de-Eventos/
 │
 ├── src/
-│   ├── main.py                    # Archivo principal que ejecuta la aplicación
-│   ├── ui/                        # Carpeta que contiene las interfaces gráficas
-│   │   ├── login.py               # Interfaz gráfica para el inicio de sesión
-│   │   ├── register.py            # Interfaz gráfica para el registro de usuarios
-│   │   ├── admin_dashboard.py     # Dashboard para los administradores
-│   │   ├── user_dashboard.py      # Dashboard para los usuarios
-│   │   ├── change_password.py     # Dashboard para gestionar el cambio de contrasena
-│   │   └── recovery_password.py   # Interfaz gráfica para recuperar contraseñas
+│   ├── main.py                      # Archivo principal que ejecuta la aplicación
+│   ├── ui/                          # Carpeta que contiene las interfaces gráficas
+│   │   ├── assets/                  # Carpeta que contiene las carpetas de cada UI
+│   │   │    ├── change_password/    # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
+│   │   │    ├── Update UI/          # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
+│   │   │    ├── dashboard_admin/    # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
+│   │   │    ├── login/              # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
+│   │   │    ├── recovery_password/  # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
+│   │   │    └── register/           # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
+│   │   │
+│   │   ├── login.py                 # Interfaz gráfica para el inicio de sesión
+│   │   ├── register.py              # Interfaz gráfica para el registro de usuarios
+│   │   ├── admin_dashboard.py       # Dashboard para los administradores
+│   │   ├── user_dashboard.py        # Dashboard para los usuarios
+│   │   ├── change_password.py       # Dashboard para gestionar el cambio de contrasena
+│   │   └── recovery_password.py     # Interfaz gráfica para recuperar contraseñas
 │   │
-│   ├── functions/                 # Funciones principales para manejar la lógica del sistema
-│   │   ├── login.py               # Función para validar credenciales de usuario
-│   │   ├── registro.py            # Función para registrar nuevos usuarios
-│   │   ├── events.py              # Función para el manejo de los eventos
-│   │   └── password.py            # Función para la recuperación de contraseñas
+│   ├── functions/                   # Funciones principales para manejar la lógica del sistema
+│   │   ├── login.py                 # Función para validar credenciales de usuario
+│   │   ├── registro.py              # Función para registrar nuevos usuarios
+│   │   ├── events.py                # Función para el manejo de los eventos
+│   │   └── password.py              # Función para la recuperación de contraseñas
 │   │
-│   └── data/                      # Carpeta que contiene la base de datos en formato JSON
-│       ├── events_data/           # Carpeta que contiene los Flyers de los eventos
-│       │   └── default_flyer.png  # Flyer Base
-│       ├── users.json             # Archivo JSON que almacena la información de usuarios
-│       └── events.json            # Archivo JSON que almacena la información de eventos
+│   └── data/                        # Carpeta que contiene la base de datos en formato JSON
+│       ├── events_data/             # Carpeta que contiene los Flyers de los eventos
+│       │   └── default_flyer.png    # Flyer Base
+│       ├── users.json               # Archivo JSON que almacena la información de usuarios
+│       └── events.json              # Archivo JSON que almacena la información de eventos
 │
-├── install.py                     # Script de instalación para verificar Python, crear entorno virtual e instalar dependencias
-├── requirements.txt               # Archivo con las dependencias del proyecto
-└── README.md                      # Este archivo
+├── install.py                       # Script de instalación para verificar Python, crear entorno virtual e instalar dependencias
+├── requirements.txt                 # Archivo con las dependencias del proyecto
+└── README.md                        # Este archivo
 ```
 
 ## Funcionalidades
