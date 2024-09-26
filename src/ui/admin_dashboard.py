@@ -88,8 +88,8 @@ def init_admin_dashboard(username):
         eventos = [{"nombre": "Este es un evento de prueba con una descripción larga", "flyer": "default_flyer.png"}] * 10  # Eventos de prueba
 
     # Definir el tamaño de la cuadrícula
-    filas, columnas = 3, 2  # 3 filas, 2 columnas por pantalla (6 eventos por pantalla)
-    matriz_eventos = [eventos[i:i+columnas] for i in range(0, len(eventos), columnas)]
+    rows, columns = 3, 2  # 3 rows, 2 columns por pantalla (6 eventos por pantalla)
+    matriz_eventos = [eventos[i:i+columns] for i in range(0, len(eventos), columns)]
 
     # Mostrar los eventos en la cuadrícula
     for i, fila_eventos in enumerate(matriz_eventos):
