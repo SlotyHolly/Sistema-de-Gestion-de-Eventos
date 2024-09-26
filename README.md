@@ -87,12 +87,12 @@ Sistema-de-Gestion-de-Eventos/
 │   ├── main.py                      # Archivo principal que ejecuta la aplicación
 │   ├── ui/                          # Carpeta que contiene las interfaces gráficas
 │   │   ├── assets/                  # Carpeta que contiene las carpetas de cada UI
-│   │   │    ├── change_password/    # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
-│   │   │    ├── Update UI/          # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
-│   │   │    ├── dashboard_admin/    # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
-│   │   │    ├── login/              # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
-│   │   │    ├── recovery_password/  # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
-│   │   │    └── register/           # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
+│   │   │    ├── change_password/ ⎯⎯⎯﹁ 
+│   │   │    ├── Update UI/           │
+│   │   │    ├── dashboard_admin/     ├⎯⎯   # Carpeta que contiene los archivos para dibujar la UI a al cual hace referencia el nombre de la carpeta
+│   │   │    ├── login/               │
+│   │   │    ├── recovery_password/   │
+│   │   │    └── register/        ⎯⎯⎯⎯│
 │   │   │
 │   │   ├── login.py                 # Interfaz gráfica para el inicio de sesión
 │   │   ├── register.py              # Interfaz gráfica para el registro de usuarios
