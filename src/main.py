@@ -1,66 +1,54 @@
-from ui.login import init_login
-from ui.user_dashboard import init_user_dashboard
-from ui.admin_dashboard import init_admin_dashboard
-from ui.recovery_password import init_recovery_password
-from ui.register import init_register_user
-from functions.registro import register_user
-from functions.login import validate_credentials
+from flask import Flask, render_template, request, redirect, url_for
+import json
+from pathlib import Path
 
-class App:
-    def __init__(self):
-        self.username = None
-        self.rol = None
+app = Flask(__name__)
 
-    def run(self):
-        while True:
-            accion, username, password = init_login()
-            if accion == 'login':
-                self.login(username, password)
-            elif accion == 'register':
-                self.register_user()
-            elif accion == 'recovery_password':
-                self.init_recovery_password()
-            elif accion is None:
-                print("Cerrando la aplicación...")
-                break  # Sale del bucle y cierra la aplicación
+# Ruta a los archivos de datos
+USERS_PATH = Path(__file__).parent / "data/users.json"
+EVENTS_PATH = Path(__file__).parent / "data/events.json"
 
-    def login(self, username, password):
-        """Maneja el proceso de inicio de sesión."""
-        result = validate_credentials(username, password)
-        
-        if result['success']:
-            print(f"Usuario {username} ha iniciado sesión.")
-            self.username = username  # Asigna el nombre de usuario al atributo de la clase
-            self.rol = result['role']
-            self.show_dashboard()  # Llama a show_dashboard sin pasar argumentos
+# Ruta principal - Página de inicio de sesión
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        # Validar las credenciales de usuario
+        if validar_credenciales(username, password):
+            return redirect(url_for('dashboard', username=username))
         else:
-            print("Credenciales inválidas. Inténtalo de nuevo.")
+            return render_template('login.html', error="Credenciales incorrectas")
+    return render_template('login.html')
 
-    def register_user(self):
-        """Muestra la ventana de registro de usuario."""
-        username, password = init_register_user()
-        if username and password:
-            # Llamar a la función de registro
-            result = register_user(username, password)
-            if result['success']:
-                # Llamar nuevamente a la ventana de login
-                accion, username, password = init_login()
-            else:
-                print(f"Error al registrar: {result['message']}")
-        else:
-            print("El nombre de usuario y la contraseña no pueden estar vacíos.")
+# Ruta para el dashboard del admin
+@app.route('/dashboard/<username>')
+def dashboard(username):
+    # Cargar eventos desde el archivo JSON
+    eventos = cargar_eventos()
+    role = "admin"  # Simulación para el rol (en este caso, admin)
+    return render_template('dashboard.html', username=username, role=role, eventos=eventos)
 
-    def init_recovery_password(self):
-        """Muestra la ventana de recuperación de contraseña."""
-        init_recovery_password()
+# Ruta para cargar los eventos
+def cargar_eventos():
+    try:
+        with open(EVENTS_PATH, 'r') as file:
+            return json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
 
-    def show_dashboard(self):
-        """Muestra el dashboard según el rol del usuario."""
-        if self.rol == "usuario":
-            init_user_dashboard(self.username)  # Abre el dashboard de usuario
-        elif self.rol == "admin":
-            init_admin_dashboard(self.username)  # Abre la consola de administrador
+# Validar credenciales (se puede mejorar para usar hashed passwords)
+def validar_credenciales(username, password):
+    try:
+        with open(USERS_PATH, 'r') as file:
+            usuarios = json.load(file)
+            for usuario in usuarios:
+                if usuario['username'] == username and usuario['password'] == password:
+                    return True
+        return False
+    except (FileNotFoundError, json.JSONDecodeError):
+        return False
 
-if __name__ == "__main__":
-    app = App()
-    app.run()
+if __name__ == '__main__':
+    app.run(debug=True)
+
