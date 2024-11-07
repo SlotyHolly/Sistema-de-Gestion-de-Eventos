@@ -1,0 +1,44 @@
+[
+    {
+        "nombre": "Concierto de Rock",
+        "descripcion": "Un concierto de rock con las mejores bandas locales.",
+        "fecha": "2024-11-15",
+        "ubicacion": "Auditorio Nacional",
+        "flyer": "rock_concert.png"
+    },
+    {
+        "nombre": "Feria de Libros",
+        "descripcion": "Encuentra los mejores títulos y autores en esta feria.",
+        "fecha": "2024-12-01",
+        "ubicacion": "Centro Cultural",
+        "flyer": "book_fair.png"
+    },
+    {
+        "nombre": "Exposición de Arte Moderno",
+        "descripcion": "Exposición de arte contemporáneo con artistas internacionales.",
+        "fecha": "2024-12-10",
+        "ubicacion": "Museo de Arte Moderno",
+        "flyer": "art_exhibition.png"
+    },
+    {
+        "nombre": "Festival de Comida Internacional",
+        "descripcion": "Un festival con platillos de todas partes del mundo.",
+        "fecha": "2024-12-20",
+        "ubicacion": "Parque Central",
+        "flyer": "food_festival.png"
+    },
+    {
+        "nombre": "Conferencia de Tecnología",
+        "descripcion": "Conoce las últimas tendencias y avances en tecnología.",
+        "fecha": "2025-01-05",
+        "ubicacion": "Centro de Convenciones",
+        "flyer": "tech_conference.png"
+    },
+    {
+        "nombre": "Carrera 10K",
+        "descripcion": "Participa en la carrera anual 10K de nuestra ciudad.",
+        "fecha": "2025-01-20",
+        "ubicacion": "Avenida Principal",
+        "flyer": "10k_run.png"
+    }
+]
