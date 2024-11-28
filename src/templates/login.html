@@ -7,10 +7,19 @@
 
 <body>
     <div class="container-login">
-        <h1>Iniciar Sesión</h1>
+        <h1>Iniciar Sesión</h1>  
         <form method="post">
             <input type="text" name="username" placeholder="Usuario" required>
             <input type="password" name="password" placeholder="Contraseña" required>
+            {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %} 
             <button type="submit">Ingresar</button>
         </form>
         <p>¿No tienes una cuenta? <a href="{{ url_for('main.register') }}">Regístrate aquí</a></p>
