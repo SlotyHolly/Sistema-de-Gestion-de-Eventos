@@ -13,5 +13,10 @@
         "session_id": "bf879e63-0b3b-4dcf-a7f0-fbb43bc3bb99",
         "username": "1",
         "role": "user"
+    },
+    {
+        "session_id": "0cd5a779-d427-48d3-bdf8-4f7ba9863ce6",
+        "username": "1",
+        "role": "user"
     }
 ]

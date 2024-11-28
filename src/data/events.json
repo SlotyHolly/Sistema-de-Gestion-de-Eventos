@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Evento de Prueba 1",
+        "location": "Lugar 1",
+        "date": "2024-11-29 14:52:57",
+        "tickets": 75,
+        "flyer": "/static/flyer_default.png"
+    },
+    {
+        "id": 2,
+        "name": "Evento de Prueba 2",
+        "location": "Lugar 2",
+        "date": "2024-11-30 14:52:57",
+        "tickets": 90,
+        "flyer": "/static/flyer_default.png"
+    },
+    {
+        "id": 3,
+        "name": "Evento de Prueba 3",
+        "location": "Lugar 3",
+        "date": "2024-12-01 14:52:57",
+        "tickets": 85,
+        "flyer": "/static/flyer_default.png"
+    },
+    {
+        "id": 4,
+        "name": "Evento de Prueba 4",
+        "location": "Lugar 4",
+        "date": "2024-12-02 14:52:57",
+        "tickets": 80,
+        "flyer": "/static/flyer_default.png"
+    },
+    {
+        "id": 5,
+        "name": "Evento de Prueba 5",
+        "location": "Lugar 5",
+        "date": "2024-12-03 14:52:57",
+        "tickets": 75,
+        "flyer": "/static/flyer_default.png"
+    }
+]
