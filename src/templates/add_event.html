@@ -1,0 +1,25 @@
+<!-- src/templates/add_event.html -->
+{% extends "base.html" %}
+
+{% block title %}Agregar Evento{% endblock %}
+
+{% block content %}
+<h1>Agregar Nuevo Evento</h1>
+<form method="post">
+    <input type="text" name="name" placeholder="Nombre del Evento" required>
+    <input type="text" name="location" placeholder="Ubicación" required>
+    <input type="datetime-local" name="date" required>
+    <input type="number" name="tickets" placeholder="Cantidad de Entradas" required>
+    <input type="text" name="flyer" placeholder="URL del Flyer" required>
+    <button type="submit">Agregar Evento</button>
+    {% for row in event['seating'] %}
+    <div style="display: flex;">
+        {% for seat in row %}
+            <button style="margin: 2px; width: 20px; height: 20px; background-color: {{ 'green' if seat == 1 else 'red' }};">
+                {{ seat }}
+            </button>
+        {% endfor %}
+    </div>
+{% endfor %}
+</form>
+{% endblock %}

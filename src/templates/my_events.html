@@ -1,0 +1,19 @@
+<!-- src/templates/my_events.html -->
+{% extends "base.html" %}
+
+{% block title %}Mis Eventos{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Mis Eventos</h1>
+    {% for event in purchased_events %}
+        <div class="event">
+            <h3>{{ event['name'] }}</h3>
+            <p><strong>Ubicación:</strong> {{ event['location'] }}</p>
+            <p><strong>Fecha:</strong> {{ event['date'] }}</p>
+            <p><strong>Tickets comprados:</strong> {{ event['tickets_bought'] }}</p>
+        </div>
+    {% endfor %}
+    <a href="{{ url_for('main.index') }}">Volver</a>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Eventos Disponibles{% endblock %}
+
+{% block content %}
+<div style="display: flex;">
+
+    <!-- Contenido principal -->
+    <div style="flex: 3; padding: 1rem;">
+        <h1>Bienvenido, {{ session['username'] }}</h1>
+        <h2>Lista de Eventos</h2>
+
+        <!-- Contenedor de tarjetas -->
+        <div class="event-grid">
+            {% for event in events %}
+                <div class="event-card">
+                    <h3>{{ event['name'] }}</h3>
+                    <p><strong>Ubicación:</strong> {{ event['location'] }}</p>
+                    <p><strong>Fecha y Hora:</strong> {{ event['date'] }}</p>
+                    <p><strong>Entradas Disponibles:</strong> {{ event['tickets'] }}</p>
+                    <img src="{{ event['flyer'] }}" alt="{{ event['name'] }}">
+                    <form action="{{ url_for('main.buy_event', event_id=event['id']) }}" method="get">
+                        <button type="submit">Comprar</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Barra de navegación -->
+    <div style="flex: 1; padding: 1rem; background-color: #f4f4f4; border-left: 1px solid #ddd;">
+        <h3>Navegación</h3>
+        <ul style="list-style: none; padding: 0;">
+            <li><a href="{{ url_for('main.profile') }}">Mi perfil</a></li>
+            <li><a href="{{ url_for('main.change_password') }}">Cambiar contraseña</a></li>
+            <li><a href="{{ url_for('main.my_events') }}">Mis eventos</a></li>
+            <li><a href="{{ url_for('main.logout') }}">Cerrar sesión</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script>
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket.on('refresh_events', function(data) {
+        // Actualiza la lista de eventos automáticamente
+        location.reload();
+    });
+</script>
+
+{% endblock %}

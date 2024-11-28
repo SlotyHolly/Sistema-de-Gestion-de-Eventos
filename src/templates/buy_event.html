@@ -1,0 +1,20 @@
+<!-- src/templates/buy_event.html -->
+{% extends "base.html" %}
+
+{% block title %}Comprar Tickets{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Comprar Tickets</h1>
+    <p><strong>Evento:</strong> {{ event['name'] }}</p>
+    <p><strong>Ubicación:</strong> {{ event['location'] }}</p>
+    <p><strong>Fecha:</strong> {{ event['date'] }}</p>
+    <p><strong>Entradas disponibles:</strong> {{ event['tickets'] }}</p>
+    <form method="post">
+        <label for="tickets">Cantidad de tickets:</label>
+        <input type="number" name="tickets" id="tickets" min="1" max="{{ event['tickets'] }}" required>
+        <button type="submit">Confirmar compra</button>
+    </form>
+    <a href="{{ url_for('main.index') }}">Volver</a>
+</div>
+{% endblock %}

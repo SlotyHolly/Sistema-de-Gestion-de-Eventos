@@ -1,7 +1,30 @@
 [
     {
-        "username": "22",
-        "password": "22",
+        "username": "admin",
+        "password": "pbkdf2:sha256:600000$PIscHGA7DZShUmOj$03444d89df7753fe2f5c641d571c07bbcbdfc0e6d937fc84ed9cc37252802ba2",
         "role": "admin"
+    },
+    {
+        "username": "user",
+        "password": "pbkdf2:sha256:600000$nMHfshqw0a525Cxh$4e15375936fecde35f6808e6b57386112a6cdf655127f9c41fd9f4738c2ce60e",
+        "role": "user"
+    },
+    {
+        "username": "prueba",
+        "password": "pbkdf2:sha256:600000$4Nry6EZO95kQ8T2m$19075b0e2df37db8af9942fadcba7c453662b97d89f1d3472c052ab980c47955",
+        "role": "user"
+    },
+    {
+        "username": "prueba2",
+        "password": "pbkdf2:sha256:600000$joWXUAd5Nyijews8$b1a684ca07206d1af0d70d1610f7bd69a0336b30f225c6a1b0a1afe4b6b1599b",
+        "role": "user"
+    },
+    {
+        "username": "1",
+        "password": "pbkdf2:sha256:600000$Su93xi66nbcoTQBM$0356668222f8381e6fee12fa3bc157c9b5ba484b19c7b8ce1b700c219e6f1e1e",
+        "role": "user",
+        "purchased_events": [
+            "1:71"
+        ]
     }
 ]

@@ -1,52 +1,232 @@
+/* src/static/styles.css */
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
-.login-container {
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Clase container */
+.container {
+    max-width: 80%; /* El contenedor ocupará el 80% del ancho de la pantalla */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    margin-top: 30px; /* Espaciado superior */
+    padding: 1rem; /* Espaciado interno */
+    background-color: white; /* Fondo blanco */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+h1, h2, h3 {
+    color: #333;
+    text-align: center;
+}
+
+/* Estilos específicos para el formulario de login */
+.container-login {
+    max-width: 400px;
+    margin: 3rem auto; /* Centra el formulario vertical y horizontalmente */
+    padding: 2rem;
     background-color: white;
-    padding: 2em;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 }
 
-input {
-    margin-bottom: 1em;
-    padding: 0.5em;
+form input {
+    width: 100%;
+    padding: 0.8rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Incluye el padding dentro del ancho total */
 }
 
-button {
-    padding: 0.5em;
+form button {
+    width: 100%;
+    padding: 0.8rem;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.events-container {
-    display: flex;
-    flex-wrap: wrap;
+form button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 .event {
-    background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Estilos para imágenes de eventos */
+.event img {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px; /* Opcional: bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Opcional: sombra para mejorar el diseño */
+}
+
+
+.footer {
     text-align: center;
+    margin-top: 2rem;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Barra de navegación */
+div[style*="background-color: #f4f4f4"] {
+    border-left: 1px solid #ddd;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+div[style*="background-color: #f4f4f4"] h3 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+div[style*="background-color: #f4f4f4"] ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+div[style*="background-color: #f4f4f4"] ul li {
+    margin-bottom: 0.5rem;
+}
+
+div[style*="background-color: #f4f4f4"] ul li a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+div[style*="background-color: #f4f4f4"] ul li a:hover {
+    color: #0056b3;
+}
+
+/* Botón de compra */
+.event form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.event form button:hover {
+    background-color: #218838;
+}
+
+/* Contenedor de tarjetas */
+.event-grid {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas */
+    gap: 1rem; /* Espaciado entre las tarjetas */
+    justify-content: space-between;
+}
+
+/* Tarjeta de evento */
+.event-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 1rem); /* 3 columnas */
+    padding: 1rem;
+    box-sizing: border-box; /* Incluye el padding en el tamaño total */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.event-card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.event-card img {
+    max-width: 100%;
+    max-height: 150px;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+}
+
+.event-card form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.event-card form button:hover {
+    background-color: #218838;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .event-card {
+        width: calc(50% - 1rem); /* 2 columnas en pantallas medianas */
+    }
+    .container {
+        max-width: 90%; /* El contenedor ocupará el 90% del ancho de la pantalla */
+    }
+}
+
+@media (max-width: 480px) {
+    .event-card {
+        width: 100%; /* 1 columna en pantallas pequeñas */
+    }
+    .container {
+        max-width: 100%; /* El contenedor ocupará el 100% del ancho de la pantalla */
+    }
 }
