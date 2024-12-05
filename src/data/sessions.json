@@ -38,5 +38,10 @@
         "session_id": "cd86bb8f-7e94-47de-9e40-db403c08c953",
         "username": "admin",
         "role": "admin"
+    },
+    {
+        "session_id": "2bdcc152-0843-4fca-9f5b-6db84c0ee077",
+        "username": "admin",
+        "role": "admin"
     }
 ]

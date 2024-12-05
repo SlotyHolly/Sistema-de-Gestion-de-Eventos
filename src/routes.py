@@ -1,9 +1,11 @@
 # src/routes.py
 from flask import Blueprint, flash, render_template, request, redirect, url_for, session, make_response
 from flask_socketio import emit # type: ignore
-from .functions import load_users, save_users, load_events, save_events, login_required, add_event_to_user, has_permission, create_seating_matrix, get_role_from_cookie, create_session, load_sessions, save_sessions, validate_session, delete_session, redirect_to_dashboard, get_available_events, total_tickets_available, validate_session
+from .functions import load_users, save_users, load_events, save_events, login_required, add_event_to_user, has_permission, create_seating_matrix, get_role_from_cookie, create_session, load_sessions, save_sessions, validate_session, delete_session, redirect_to_dashboard, get_available_events, total_tickets_available, validate_session, allowed_file
 from .app import socketio
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+import os
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
@@ -29,7 +31,10 @@ def validate_cookie():
 @main.route('/')
 def home():
     if 'username' in session:
-        return redirect(url_for('main.index'))
+        if session['role'] == 'admin':
+            return redirect(url_for('main.admin'))
+        else:
+            return redirect(url_for('main.index'))
     else:
         return redirect(url_for('main.login'))
 
@@ -105,31 +110,65 @@ def events_by_category(category):
 @main.route('/admin')
 @login_required(role='admin')
 def admin():
-    return render_template('admin.html')
+    eventos = load_events()
+    # Degubeamos la variable eventos
+    print(eventos)
+    return render_template('admin.html', events=eventos)
 
 @main.route('/add_event', methods=['GET', 'POST'])
 @login_required(role='admin')
 def add_event():
-    if 'role' in session and session['role'] == 'admin':
-        if request.method == 'POST':
-            events = load_events()
-            rows = int(request.form['rows'])  # Filas de asientos
-            cols = int(request.form['cols'])  # Columnas de asientos
+    """Permite al administrador agregar nuevos eventos."""
+    if request.method == 'POST':
+        try:
+            # Cargar eventos existentes
+            eventos = load_events()
+
+            # Obtener datos del formulario
+            name = request.form['name']
+            location = request.form['location']
+            date = request.form['date']
+            flyer = request.form['flyer']
+            rows = int(request.form.get('rows', 0))  # Filas de asientos
+            cols = int(request.form.get('cols', 0))  # Columnas de asientos
+
+            if not name or not location or not date or rows <= 0 or cols <= 0:
+                flash("Todos los campos son obligatorios y deben ser válidos.", "error")
+                return render_template('add_event.html')
+
+            # Manejo de la imagen subida
+            image = request.files.get('image')
+            if image and allowed_file(image.filename):
+                filename = secure_filename(image.filename)
+                image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                image.save(image_path)
+                flyer = f"/{image_path}"  # Usa la imagen subida como flyer
+
+            # Crear nuevo evento
             new_event = {
-                'id': f"event{len(events) + 1}",
-                'name': request.form['name'],
-                'location': request.form['location'],
-                'date': request.form['date'],
+                'id': f"event{len(eventos) + 1}",
+                'name': name,
+                'location': location,
+                'date': date,
+                'flyer': flyer,
                 'tickets': rows * cols,
-                'flyer': request.form['flyer'],
-                'seating': create_seating_matrix(rows, cols)  # Matriz de asientos
+                'disponibilidad': rows * cols,
+                'seating': create_seating_matrix(rows, cols)
             }
-            events.append(new_event)
-            save_events(events)
+
+            # Agregar evento y guardar
+            eventos.append(new_event)
+            save_events(eventos)
+
+            flash("Evento agregado exitosamente.", "success")
             return redirect(url_for('main.admin'))
-        return render_template('add_event.html')
-    else:
-        return redirect(url_for('main.login'))
+
+        except Exception as e:
+            print(f"Error al agregar evento: {e}")
+            flash("Error al agregar el evento. Por favor, revisa los datos ingresados.", "error")
+            return render_template('add_event.html')
+
+    return render_template('add_event.html')
 
 @main.route('/profile')
 @login_required()
@@ -201,6 +240,45 @@ def my_events():
         return render_template('my_events.html', purchased_events=purchased_events)
 
     return redirect(url_for('main.login'))
+
+@main.route('/edit_event/<event_id>', methods=['GET', 'POST'])
+@login_required(role='admin')
+def edit_event(event_id):
+    eventos = load_events()
+    evento = next((e for e in eventos if str(e['id']) == str(event_id)), None)
+
+    if not evento:
+        flash("Evento no encontrado.", "error")
+        return redirect(url_for('main.admin'))
+
+    if request.method == 'POST':
+        try:
+            # Elimina espacios extra de los nombres de los campos
+            form_data = {key.strip(): value for key, value in request.form.items()}
+
+            evento['name'] = form_data['name']
+            evento['location'] = form_data['location']
+            evento['date'] = form_data['date']
+            evento['flyer'] = form_data['flyer']
+            evento['tickets'] = int(form_data['tickets'])
+
+            # Manejo de la imagen subida
+            image = request.files.get('image')
+            if image and allowed_file(image.filename):
+                filename = secure_filename(image.filename)
+                image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                image.save(image_path)
+                event['flyer'] = f"/{image_path}"
+
+            save_events(eventos)
+            flash("Evento actualizado exitosamente.", "success")
+            return redirect(url_for('main.admin'))
+        except Exception as e:
+            print(f"Error al actualizar evento: {e}")
+            print("Datos recibidos:", request.form)
+            flash("Ocurrió un error al actualizar el evento.", "error")
+
+    return render_template('edit_event.html', event=evento)
 
 @main.route('/buy_event/<event_id>', methods=['GET', 'POST'])
 def buy_event(event_id):
@@ -323,6 +401,53 @@ def confirm_purchase(event_id):
         print(f"Error al procesar la compra: {e}")
         flash("Ocurrió un error al procesar tu compra.", "error")
         return redirect(url_for('main.buy_event_dashboard', event_id=event_id))
+
+@main.route('/manage_users')
+@login_required(role='admin')
+def manage_users():
+    users = load_users()
+    return render_template('manage_users.html', users=users)
+
+@main.route('/edit_user/<username>', methods=['GET', 'POST'])
+@login_required(role='admin')
+def edit_user(username):
+    users = load_users()
+    user = next((u for u in users if u['username'] == username), None)
+
+    if not user:
+        flash("Usuario no encontrado.", "error")
+        return redirect(url_for('main.manage_users'))
+
+    if request.method == 'POST':
+        try:
+            user['username'] = request.form['username']
+            user['role'] = request.form['role']
+            if request.form['password']:
+                user['password'] = generate_password_hash(request.form['password'], method='pbkdf2:sha256')
+
+            save_users(users)
+            flash("Usuario actualizado exitosamente.", "success")
+            return redirect(url_for('main.manage_users'))
+        except Exception as e:
+            print(f"Error al actualizar usuario: {e}")
+            flash("Ocurrió un error al actualizar el usuario.", "error")
+
+    return render_template('edit_user.html', user=user)
+
+@main.route('/delete_user/<username>', methods=['POST'])
+@login_required(role='admin')
+def delete_user(username):
+    try:
+        users = load_users()
+        users = [u for u in users if u['username'] != username]
+        save_users(users)
+        flash("Usuario eliminado exitosamente.", "success")
+    except Exception as e:
+        print(f"Error al eliminar usuario: {e}")
+        flash("Ocurrió un error al eliminar el usuario.", "error")
+
+    return redirect(url_for('main.manage_users'))
+
 
 @main.route('/available_events')
 def available_events():

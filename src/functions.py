@@ -11,6 +11,8 @@ from functools import reduce
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 QR_DIR = os.path.join(os.path.dirname(__file__), 'data', 'qr_codes')
 SESSIONS_PATH = Path(__file__).parent / "data/Sessions.json"
+UPLOAD_FOLDER = 'static/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 
 # Diccionario de roles y permisos
@@ -18,6 +20,9 @@ ROLES_PERMISSIONS = {
     'admin': ['add_event', 'view_events', 'manage_users'],
     'user': ['view_events', 'buy_event']
 }
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def redirect_to_dashboard(role):
     """Redirige al dashboard correspondiente según el rol."""

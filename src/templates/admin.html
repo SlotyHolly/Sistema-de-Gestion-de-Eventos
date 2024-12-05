@@ -5,6 +5,40 @@
 
 {% block content %}
 <h1>Panel de Administración</h1>
-<a href="{{ url_for('main.logout') }}" style="float:right;">Cerrar Sesión</a>
-<a href="{{ url_for('main.add_event') }}">Agregar Evento</a>
+<a href="{{ url_for('main.logout') }}" style="float:right;" class="btn">Cerrar Sesión</a>
+<a href="{{ url_for('main.add_event') }}" class="btn">Agregar Evento</a>
+<a href="{{ url_for('main.manage_users') }}" class="btn">Gestionar Usuarios</a>
+
+<hr>
+
+<h2>Eventos Disponibles</h2>
+<table border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ubicación</th>
+            <th>Fecha</th>
+            <th>Disponibilidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.name }}</td>
+            <td>{{ event.location }}</td>
+            <td>{{ event.date }}</td>
+            <td>{{ event.tickets }}</td>
+            <td>
+                <a href="{{ url_for('main.edit_event', event_id=event.id) }}" class="btn">Editar</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5" style="text-align: center;">No hay eventos disponibles.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
+

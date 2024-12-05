@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Usuario{% endblock %}
+
+{% block content %}
+<h1>Editar Usuario</h1>
+<a href="{{ url_for('main.manage_users') }}" class="btn">Volver a la Gestión de Usuarios</a>
+<hr>
+
+<form method="POST">
+    <label for="username">Nombre de Usuario:</label>
+    <input type="text" id="username" name="username" value="{{ user.username }}" required>
+    
+    <label for="role">Rol:</label>
+    <select id="role" name="role">
+        <option value="user" {% if user.role == "user" %}selected{% endif %}>Usuario</option>
+        <option value="admin" {% if user.role == "admin" %}selected{% endif %}>Administrador</option>
+    </select>
+    
+    <label for="password">Nueva Contraseña (opcional):</label>
+    <input type="password" id="password" name="password">
+    
+    <button type="submit" class="btn">Guardar Cambios</button>
+</form>
+{% endblock %}

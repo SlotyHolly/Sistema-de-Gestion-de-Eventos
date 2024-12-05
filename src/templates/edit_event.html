@@ -1,0 +1,32 @@
+<!-- src/templates/edit_event.html -->
+{% extends "base.html" %}
+
+{% block title %}Editar Evento{% endblock %}
+
+{% block content %}
+<h1>Editar Evento</h1>
+<a href="{{ url_for('main.admin') }}" class="btn" style="justify-content: flex-end;">Volver al Panel de Administración</a>
+
+<form method="POST" action="{{ url_for('main.edit_event', event_id=event.id) }}">
+    <label for="name">Nombre del Evento:</label>
+    <input type="text" id="name" name="name" value="{{ event.name }}" required>
+    
+    <label for="location">Ubicación:</label>
+    <input type="text" id="location" name="location" value="{{ event.location }}" required>
+    
+    <label for="date">Fecha:</label>
+    <input type="date" id="date" name="date" value="{{ event.date.split(' ')[0] }}" required>
+    
+    <label for="flyer">URL del Flyer (opcional):</label>
+    <input type="text" id="flyer" name="flyer">
+
+    <label for="image">Subir Imagen (opcional):</label>
+    <input type="file" id="image" name="image">
+    
+    <label for="tickets ">Cantidad de Tickets:</label>
+    <input type="number" id="tickets" name="tickets" value="{{ event.tickets }}" required>
+    
+    <button type="submit">Guardar Cambios</button>
+</form>
+
+{% endblock %}

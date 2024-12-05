@@ -3,8 +3,8 @@
         "id": 1,
         "name": "Evento de Prueba 1",
         "location": "Lugar 1",
-        "date": "2024-11-29 14:52:57",
-        "tickets": 5,
+        "date": "2024-11-29",
+        "tickets": 100,
         "flyer": "/static/flyer_default.png"
     },
     {
@@ -38,5 +38,19 @@
         "date": "2024-12-03 14:52:57",
         "tickets": 75,
         "flyer": "/static/flyer_default.png"
+    },
+    {
+        "id": "event6",
+        "name": "pRUEBa",
+        "location": "PRUEBA",
+        "date": "2025-01-16",
+        "flyer": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU9QS1BTwEShXe8azXeBVwdQQkFNsEn1UCzg&s",
+        "tickets": 1,
+        "disponibilidad": 1,
+        "seating": [
+            [
+                1
+            ]
+        ]
     }
 ]

@@ -5,21 +5,28 @@
 
 {% block content %}
 <h1>Agregar Nuevo Evento</h1>
-<form method="post">
-    <input type="text" name="name" placeholder="Nombre del Evento" required>
-    <input type="text" name="location" placeholder="Ubicación" required>
-    <input type="datetime-local" name="date" required>
-    <input type="number" name="tickets" placeholder="Cantidad de Entradas" required>
-    <input type="text" name="flyer" placeholder="URL del Flyer" required>
+<form method="POST" action="{{ url_for('main.add_event') }}">
+    <label for="name">Nombre del Evento:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="location">Ubicación:</label>
+    <input type="text" id="location" name="location" required>
+
+    <label for="date">Fecha:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="flyer">URL del Flyer (opcional):</label>
+    <input type="text" id="flyer" name="flyer">
+
+    <label for="image">Subir Imagen (opcional):</label>
+    <input type="file" id="image" name="image">
+
+    <label for="rows">Filas de Asientos:</label>
+    <input type="number" id="rows" name="rows" min="1" required>
+
+    <label for="cols">Columnas de Asientos:</label>
+    <input type="number" id="cols" name="cols" min="1" required>
+
     <button type="submit">Agregar Evento</button>
-    {% for row in event['seating'] %}
-    <div style="display: flex;">
-        {% for seat in row %}
-            <button style="margin: 2px; width: 20px; height: 20px; background-color: {{ 'green' if seat == 1 else 'red' }};">
-                {{ seat }}
-            </button>
-        {% endfor %}
-    </div>
-{% endfor %}
 </form>
 {% endblock %}
