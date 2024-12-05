@@ -24,7 +24,13 @@
         "password": "pbkdf2:sha256:600000$Su93xi66nbcoTQBM$0356668222f8381e6fee12fa3bc157c9b5ba484b19c7b8ce1b700c219e6f1e1e",
         "role": "user",
         "purchased_events": [
-            "1:10"
+            "1:80",
+            "3:85"
         ]
+    },
+    {
+        "username": "prueba1",
+        "password": "pbkdf2:sha256:600000$LY3ZCjnPUnfrES7a$09bb64db96f5129e7b2bae8cc0a637af83c608ca27e53aed418d656503d2624a",
+        "role": "user"
     }
 ]

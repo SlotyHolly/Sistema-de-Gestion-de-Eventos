@@ -13,5 +13,30 @@
         "session_id": "bf879e63-0b3b-4dcf-a7f0-fbb43bc3bb99",
         "username": "1",
         "role": "user"
+    },
+    {
+        "session_id": "fc6daab2-886f-4a9d-b4a6-e8019d3e103e",
+        "username": "prueba1",
+        "role": "user"
+    },
+    {
+        "session_id": "75372898-ab6b-4f8f-b8a0-dec2ddd66bf6",
+        "username": "1",
+        "role": "user"
+    },
+    {
+        "session_id": "d9cb40ba-5d0b-42e1-8b7d-56e37aab1a82",
+        "username": "1",
+        "role": "user"
+    },
+    {
+        "session_id": "a7bf7348-84d5-44c9-878f-803b067e01e0",
+        "username": "user",
+        "role": "user"
+    },
+    {
+        "session_id": "cd86bb8f-7e94-47de-9e40-db403c08c953",
+        "username": "admin",
+        "role": "admin"
     }
 ]

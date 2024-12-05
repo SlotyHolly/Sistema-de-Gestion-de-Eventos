@@ -4,7 +4,7 @@
         "name": "Evento de Prueba 1",
         "location": "Lugar 1",
         "date": "2024-11-29 14:52:57",
-        "tickets": 75,
+        "tickets": 5,
         "flyer": "/static/flyer_default.png"
     },
     {
@@ -20,7 +20,7 @@
         "name": "Evento de Prueba 3",
         "location": "Lugar 3",
         "date": "2024-12-01 14:52:57",
-        "tickets": 85,
+        "tickets": 0,
         "flyer": "/static/flyer_default.png"
     },
     {
